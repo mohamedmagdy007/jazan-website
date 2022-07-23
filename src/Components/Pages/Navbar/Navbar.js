@@ -1,11 +1,14 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import Logo1 from "../../../images/logo1@2x.png";
 import Logo2 from "../../../images/logo2@2x.png";
 import "./Navbar.css";
 import SideBar from "./SideBar";
 import Backdrop from "./Backdrop";
 import { Link } from "react-router-dom";
-// import { FaAlignRight } from "react-icons/fa";
+import JazanTab from "../Jazan-tab/JazanTab";
+import "bootstrap/js/dist/tab";
+import ProvincesTab from "../Jazan-tab/ProvincesTab";
+import Municipalities from "../Jazan-tab/Municipalities";
 const Navbar = () => {
   const [isOpen, updateIsOpen] = useState(false);
   const toggleSidebar = () => {
@@ -27,51 +30,113 @@ const Navbar = () => {
                 <span className=" dropdown-toggle">الرئيسية</span>
               </li>
               <li className="nav-item dropdown dropdown-one me-1">
-                <Link to="/jazan_region" className=" dropdown-toggle">منطقة جازان</Link>
+                <Link to="/jazan_region" className=" dropdown-toggle">
+                  منطقة جازان
+                </Link>
                 <ul className="dropdown-menu dropdown-menu-two">
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      منطقة جازان
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      المحافظات
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      البلديات
-                    </a>
-                  </li>
+                  <div
+                    className="d-flex nav-tabs tabsNavbar text-center"
+                    id="myTab"
+                    role="tablist"
+                  >
+                    <li class="nav-item" role="presentation">
+                      <span
+                        className="dropdown-item nav-link active"
+                        id="home-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#home-tab-pane"
+                        type="button"
+                        role="tab"
+                        aria-controls="home-tab-pane"
+                        aria-selected="true"
+                      >
+                        منطقة جازان
+                      </span>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <span
+                        className="dropdown-item nav-link"
+                        id="provinces-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#provinces-tab-pane"
+                        type="button"
+                        role="tab"
+                        aria-controls="provinces-tab-pane"
+                        aria-selected="false"
+                      >
+                        المحافظات
+                      </span>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <span
+                        className="dropdown-item nav-link"
+                        id="municipalities-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#municipalities-tab-pane"
+                        type="button"
+                        role="tab"
+                        aria-controls="municipalities-tab-pane"
+                        aria-selected="false"
+                      >
+                        البلديات
+                      </span>
+                    </li>
 
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      المراكز
-                    </a>
-                  </li>
+                    <li class="nav-item" role="presentation">
+                      <span
+                        className="dropdown-item nav-link"
+                        id="centers-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#centers-tab-pane"
+                        type="button"
+                        role="tab"
+                        aria-controls="centers-tab-pane"
+                        aria-selected="false"
+                      >
+                        المراكز
+                      </span>
+                    </li>
+                  </div>
+                  <div class="tab-content mt-2" id="myTabContent">
+                    <JazanTab
+                      classess={"tab-pane fade show active"}
+                      id="home-tab-pane"
+                      role="tabpanel"
+                      arialabelledby="home-tab"
+                      tabindex="0"
+                    />
+                    <ProvincesTab
+                      classess={"tab-pane fade"}
+                      id="provinces-tab-pane"
+                      role="tabpanel"
+                      arialabelledby="provinces-tab"
+                      tabindex="0"
+                    />
+                    <Municipalities
+                      classess={"tab-pane fade"}
+                      id="municipalities-tab-pane"
+                      role="tabpanel"
+                      arialabelledby="municipalities-tab"
+                      tabindex="0"
+                    />
+                  </div>
                 </ul>
               </li>
-              
+
               <li className="me-1 dropdown dropdown-two">
-                <span className="dropdown-toggle">
-                  المراصد الحضرية
-                </span>
+                <span className="dropdown-toggle">المراصد الحضرية</span>
                 <ul className="dropdown-menu dropdown-menu-two">
                   <li>
-                    <a className="dropdown-item" href="#">
-                      تاريخ المراصد
-                    </a>
+                    <span className="dropdown-item">تاريخ المراصد</span>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      المراصد بالمملكة
-                    </a>
+                    <span className="dropdown-item">المراصد بالمملكة</span>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      مرصد جازان
-                    </a>
+                    <span className="dropdown-item">مرصد جازان</span>
+                  </li>
+                  <li>
+                    <sapn className="dropdown-item">الاطار العام للمؤشرات</sapn>
                   </li>
                 </ul>
               </li>
@@ -79,19 +144,13 @@ const Navbar = () => {
                 <span className=" dropdown-toggle">الفريق</span>
                 <ul className="dropdown-menu dropdown-menu-two">
                   <li>
-                    <a className="dropdown-item" href="#">
-                      المجلس الاعلى
-                    </a>
+                    <span className="dropdown-item">المجلس الاعلى</span>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      فريق العمل
-                    </a>
+                    <span className="dropdown-item">فريق العمل</span>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      شركائنا
-                    </a>
+                    <span className="dropdown-item">شركائنا</span>
                   </li>
                 </ul>
               </li>
@@ -106,39 +165,42 @@ const Navbar = () => {
                     </span>
                     <ul className="dropdown-menu  dropdown-menu-three">
                       <li>
-                        <a className="dropdown-item" href="#">
+                        <span className="dropdown-item">
                           زيارة المرصد لأبو عريش
-                        </a>
+                        </span>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">
+                        <span className="dropdown-item">
                           زيارة المرصد لأبو عريش
-                        </a>
+                        </span>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">
+                        <span className="dropdown-item">
                           زيارة المرصد لأبو عريش
-                        </a>
+                        </span>
                       </li>
                     </ul>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      مكتبة الفيديو
-                    </a>
+                    <span className="dropdown-item">مكتبة الفيديو</span>
                   </li>
                 </ul>
               </li>
               <li className="me-1">التقارير</li>
               <li className="me-1">اخبار المرصد</li>
-              <li className="me-1 last-item" ><Link to="/contactus">اتصل بنا </Link></li>
+              <li className="me-1 last-item">
+                <Link to="/contactus">اتصل بنا </Link>
+              </li>
             </ul>
             <button
               className="d-block d-xl-none m-auto button"
               onClick={toggleSidebar}
             >
-              {/* <FaAlignRight /> */}
-              ------
+              {isOpen === true ? (
+                <i class="fa-solid fa-xmark fs-2"></i>
+              ) : (
+                <i class="fa-solid fa-align-justify fs-2"></i>
+              )}
             </button>
           </div>
         </div>

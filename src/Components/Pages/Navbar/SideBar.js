@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 // import "bootstrap/js/dist/dropdown";
 
@@ -26,32 +27,40 @@ const SideBar = ({ isOpen }) => {
   return (
     <aside className={`d-block d-xl-none ${isOpen ? "sidebar-open" : null}`}>
       <ul className="itemsNavbar d-block d-xl-none">
-        <li className="dropdown me-1 ">
-          <span
+        <li className="me-1 active">
+          <span className="">الرئيسية</span>
+        </li>
+        <li
+          className={`dropdown me-1 ${
+            dropdownOne === true ? "dropup" : "dropdown"
+          }`}
+        >
+          <Link
+            to="/jazan_region"
             className=" dropdown-toggle"
             onClick={dropdownOneHandler}
           >
-            الرئيسية
-          </span>
+            منطقة جازان
+          </Link>
           <ul
             className={`p-0 droplist ${
-              dropdownOne === true ? "show" : "visually-hidden"
+              dropdownOne === true ? "showddroplist" : "visually-hidden"
             }`}
           >
             <li>
-              <a className="dropdown-item" href="#">
+              <Link to="/jazan" className="dropdown-item">
                 منطقة جازان
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="dropdown-item" href="#">
+              <Link to="/provinces" className="dropdown-item">
                 المحافظات
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="dropdown-item" href="#">
+              <Link to="/jazanMunici" className="dropdown-item">
                 البلديات
-              </a>
+              </Link>
             </li>
 
             <li>
@@ -61,78 +70,71 @@ const SideBar = ({ isOpen }) => {
             </li>
           </ul>
         </li>
-
-        <li className="me-1 dropdown">
-          <span
-            className=" dropdown-toggle"
-            onClick={dropdownTwoHandler}
-          >
+        <li
+          className={`dropdown me-1 ${
+            dropdownTwo === true ? "dropup" : "dropdown"
+          }`}
+        >
+          <span className=" dropdown-toggle" onClick={dropdownTwoHandler}>
             المراصد الحضرية
           </span>
           <ul
             className={`p-0 droplist ${
-              dropdownTwo === true ? "show" : "visually-hidden"
+              dropdownTwo === true ? "showddroplist" : "visually-hidden"
             }`}
           >
             <li>
-              <a className="dropdown-item" href="#">
-                تاريخ المراصد
-              </a>
+              <span className="dropdown-item">تاريخ المراصد</span>
             </li>
             <li>
-              <a className="dropdown-item" href="#">
-                المراصد بالمملكة
-              </a>
+              <span className="dropdown-item">المراصد بالمملكة</span>
             </li>
             <li>
-              <a className="dropdown-item" href="#">
-                مرصد جازان
-              </a>
+              <span className="dropdown-item">مرصد جازان</span>
+            </li>
+            <li>
+              <span className="dropdown-item">الاطار العام للمؤشرات</span>
             </li>
           </ul>
         </li>
-        <li className="me-1 dropdown dropdown-two ">
-          <span
-            className=" dropdown-toggle"
-            onClick={dropdownThreeHandler}
-          >
+        <li
+          className={`dropdown me-1 ${
+            dropdownThree === true ? "dropup" : "dropdown"
+          }`}
+        >
+          <span className=" dropdown-toggle" onClick={dropdownThreeHandler}>
             الفريق
           </span>
           <ul
             className={`p-0 droplist ${
-              dropdownThree === true ? "show" : "visually-hidden"
+              dropdownThree === true ? "showddroplist" : "visually-hidden"
             }`}
           >
             <li>
-              <a className="dropdown-item" href="#">
-                المجلس الاعلى
-              </a>
+              <sapn className="dropdown-item">المجلس الاعلى</sapn>
             </li>
             <li>
-              <a className="dropdown-item" href="#">
-                فريق العمل
-              </a>
+              <sapn className="dropdown-item">فريق العمل</sapn>
             </li>
             <li>
-              <a className="dropdown-item" href="#">
-                شركائنا
-              </a>
+              <span className="dropdown-item">شركائنا</span>
             </li>
           </ul>
         </li>
-        <li className="me-1 dropdown">
-          <span
-            className="dropdown-toggle "
-            onClick={dropdownFourHandler}
-          >
+        <li
+          className={`dropdown me-1 ${
+            dropdownFour === true ? "dropup" : "dropdown"
+          }`}
+        >
+          <span className="dropdown-toggle " onClick={dropdownFourHandler}>
             المكتبة الاعلانية
           </span>
           <ul
             className={`p-0 droplist ${
-              dropdownFour === true ? "show" : "visually-hidden"
+              dropdownFour === true ? "showddroplist" : "visually-hidden"
             }`}
           >
-            <li className="dropdown dropend dropdown-three btn-group">
+            <li className={`dropend me-1`}>
               <span
                 className="dropdown-item dropdown-toggle "
                 onClick={dropdownFiveHandler}
@@ -141,37 +143,31 @@ const SideBar = ({ isOpen }) => {
               </span>
               <ul
                 className={`p-0 droplist ${
-                  dropdownFive === true ? "show" : "visually-hidden"
+                  dropdownFive === true ? "showddroplist" : "visually-hidden"
                 }`}
               >
                 <li>
-                  <a className="dropdown-item" href="#">
-                    زيارة المرصد لأبو عريش
-                  </a>
+                  <span className="dropdown-item">زيارة المرصد لأبو عريش</span>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
-                    زيارة المرصد لأبو عريش
-                  </a>
+                  <span className="dropdown-item">زيارة المرصد لأبو عريش</span>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
-                    زيارة المرصد لأبو عريش
-                  </a>
+                  <span className="dropdown-item">زيارة المرصد لأبو عريش</span>
                 </li>
               </ul>
             </li>
             <li>
-              <a className="dropdown-item" href="#">
-                مكتبة الفيديو
-              </a>
+              <span className="dropdown-item">مكتبة الفيديو</span>
             </li>
           </ul>
         </li>
         <li className="me-1">المكتبة الاعلانية</li>
         <li className="me-1">التقارير</li>
         <li className="me-1">اخبار المرصد</li>
-        <li className="me-1">اتصل بنا</li>
+        <li className="me-1 last-item mt-2">
+          <Link to="/contactus">اتصل بنا </Link>
+        </li>
       </ul>
     </aside>
   );
